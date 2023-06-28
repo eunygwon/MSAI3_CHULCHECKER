@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<!-- 
+    Title: MS AI School 3기 6월 출첵커
+    Author: 권은영 (Eunyoun Gwon) https://www.linkedin.com/in/eunyounggwon/
+    Date: 2023/06/28
+    Description: 각 출석체크 시간마다 새 창으로 출석 링크를 띄워주는 페이지입니다. (새창 팝업 허용 필요)
+-->
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>MS AI School 3기 6월 출첵커</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap">
+    <style>
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            color: white;
+        }
+        #clock {
+            font-size: 88px;
+            font-weight: 600;
+        }
+        .container {
+            position: relative;
+            display: flex;
+            border-radius: 10px;
+            background: linear-gradient(90deg, #211D3E 20%, #251F43 130%);
+            gap: 10px;
+            padding: 20px;
+            width: 100%;
+            height: 100%;
+            justify-content: center;
+            flex-direction: column;
+            align-items: center;
+        }
+        .page {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            text-align: center;
+            align-items: center;
+            justify-content: center;
+            z-index: 9;
+        }
+        .message {
+            font-size: 25px;
+            text-align: center;
+            margin-top: 5px;
+        }
+        .hidden {
+            display: none;
+        }
+        .logo{
+            position: absolute;
+            bottom: 75px;
+            width: 180px;
+        }
+        .title{
+            position: absolute;
+            top: 75px;
+            width:100%;
+            font-size: 20px;
+            color: #46C5DE;
+        }
+        .no{
+            color: #ffbb31;
+        }
+        .yes{
+            color: #9bef3c;
+            cursor: pointer;
+        }
+        @media screen and (max-height: 420px) {
+            .title {
+                display: none;
+                background: #9bef3c;
+            }
+            .logo {
+                display: none;
+                background: #9bef3c;
+            }
+        }
+        
+    </style>
+    
+</head>
+<body onload="updateClock();">
+<div class="page">
+<div class="container">
+    <H1 class="title">MS AI School 3기 6월 출첵커</H1>
+    <div id="clock"></div>
+    <p class="message no hidden" id="noChulCheck">지금은 출석체크 시간이 아닙니다.</p>
+    <p class="message yes hidden" id="morningChulCheck">아침 출석시간 입니다.</p>
+    <p class="message yes hidden" id="noonChulCheck">점심 출석시간 입니다.</p>
+    <p class="message yes hidden" id="eveningChulCheck">저녁 출석시간 입니다.</p>
+    <img class="logo" src="https://cdn.imweb.me/thumbnail/20220817/3f2423e6ae082.png" alt="">
+</div>
+</div>
+<script>
+    let morningLink = "https://forms.office.com/r/fyjBertmua"; // 6월 링크
+    let noonLink = "https://forms.office.com/r/XY5TevC9tj"; // 6월 링크
+    let eveningLink = "https://forms.office.com/r/n8Cp2YJyJ8"; // 6월 링크
+    let currentState = -1; // 0:출석 시간 아님  | 1:아침 출석 시간(08:45:00-09:09:59) | 2:점심출석시간 (12:55:00-13:09:59) | 3:저녁출석시간(17:51:00-18:04:59)
+
+    window.addEventListener("DOMContentLoaded", function() {
+        let now = new Date();
+        let h = now.getHours();
+        let m = now.getMinutes();
+        let s = now.getSeconds();
+        setCurrentState(h, m, s);  // Initialize current state
+
+        document.getElementById("morningChulCheck").addEventListener("click", function () {
+            openMorningLink();
+        });
+        document.getElementById("noonChulCheck").addEventListener("click", function () {
+            openNoonLink();
+        });
+        document.getElementById("eveningChulCheck").addEventListener("click", function () {
+            openEveningLink();
+        });
+    })
+    
+    function setCurrentState(hours, minutes, seconds) {
+        if(!hours || !minutes || !seconds){
+            const currentTime = new Date();
+            hours = currentTime.getHours();
+            minutes = currentTime.getMinutes();
+            seconds = currentTime.getSeconds();
+        }
+
+        if (
+            (hours === 8 && minutes >= 45 && minutes <= 59 && seconds <= 59) ||
+            (hours === 9 && minutes >= 0 && minutes <= 9 && seconds <= 59)
+        )
+        { 
+            if (currentState!==1){
+                currentState = 1;
+                openMorningLink();
+                showMessage("morningChulCheck");
+            }
+        }
+        else if (
+            (hours === 12 && minutes >= 55 && minutes <= 59 && seconds <= 59) ||
+            (hours === 13 && minutes >= 0 && minutes <= 9 && seconds <= 59)
+        )
+        {
+            if (currentState!==2){
+                currentState = 2;
+                openNoonLink();
+                showMessage("noonChulCheck");
+            }
+        }
+        else if (
+            (hours === 17 && minutes >= 51 && minutes <= 59 && seconds <= 59) ||
+            (hours === 18 && minutes >= 0 && minutes <= 4 && seconds <= 59)
+        )
+        {
+            if (currentState!==3){
+                currentState = 3;
+                showMessage("eveningChulCheck");
+                openEveningLink();
+            }
+        } 
+        else
+        {
+            if (currentState!==0){
+                currentState = 0;
+                showMessage("noChulCheck");
+            }
+        }
+    }
+    function openMorningLink () {window.open(morningLink, '_blank');}
+    function openNoonLink () {window.open(noonLink, '_blank');}
+    function openEveningLink () {window.open(eveningLink, '_blank');}
+    function showMessage(id) {
+        const elements = document.querySelectorAll('.message');
+        for (let i = 0; i < elements.length; i++) {
+            const element = elements[i];
+            if (element.id === id) {
+                if(id!=="noChulCheck"){
+                    let time = (id.includes("morning"))?"아침":(id.includes("noon"))?"점심":(id.includes("morning"))?"저녁":"";
+                    alert(`${time} 출석 체크 시간입니다!`);
+                }
+                element.classList.remove('hidden');
+            } else {
+                element.classList.add('hidden'); 
+            }
+        }
+    }
+    function updateClock() {
+        let now = new Date();
+        let h = now.getHours();
+        let m = now.getMinutes();
+        let s = now.getSeconds();
+
+        setCurrentState(h,m,s);
+
+        m = checkTime(m);
+        s = checkTime(s);
+        document.getElementById('clock').innerHTML = h + ":" + m + ":" + s;
+        let t = setTimeout(updateClock, 1000);  // 1000 updateClock 함수를 실행
+    }
+    function checkTime(i) {
+        if (i < 10) {i = "0" + i}  // 숫자가 10 미만인 경우 앞에 0을 추가
+        return i;
+    }
+</script>
+</body>
+</html>
