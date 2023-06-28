@@ -186,7 +186,7 @@
             const element = elements[i];
             if (element.id === id) {
                 if(id!=="noChulCheck"){
-                    let time = (id.includes("morning"))?"아침":(id.includes("noon"))?"점심":(id.includes("morning"))?"저녁":"";
+                    let time = (id.includes("morning"))?"아침":(id.includes("noon"))?"점심":(id.includes("evening"))?"저녁":"";
                     alert(`${time} 출석 체크 시간입니다!`);
                 }
                 element.classList.remove('hidden');
