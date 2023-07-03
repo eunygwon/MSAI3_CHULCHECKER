@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <!-- 
-    Title: MS AI School 3기 6월 출첵커
+    Title: MS AI School 3기 7월 출첵커
     Author: 권은영 (Eunyoun Gwon) https://www.linkedin.com/in/eunyounggwon/
-    Date: 2023/06/28
+    Date Created: 2023/06/28
+    Date Updated: 2023/07/03
     Description: 각 출석체크 시간마다 새 창으로 출석 링크를 띄워주는 페이지입니다. (새창 팝업 허용 필요)
 -->
 <html>
@@ -10,7 +11,7 @@
     <meta charset="utf-8">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <link rel="icon" href="data:image/svg+xml,%3Csvg version='1.1' id='출첵아이콘' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' x='0px' y='0px' viewBox='0 0 256 256' style='enable-background:new 0 0 256 256;' xml:space='preserve'%3E%3Cstyle type='text/css'%3E .st0%7Bfill:url(%23SVGID_1_);%7D .st1%7Bfill:url(%23SVGID_00000070107613856734718120000004778229672984945827_);%7D .st2%7Bfill:%2300D3E3;%7D%0A%3C/style%3E%3ClinearGradient id='SVGID_1_' gradientUnits='userSpaceOnUse' x1='255.8949' y1='255.821' x2='0.8657' y2='0.7919'%3E%3Cstop offset='0.171' style='stop-color:%23324A9E'/%3E%3Cstop offset='0.8917' style='stop-color:%2327336F'/%3E%3C/linearGradient%3E%3Crect x='0.76' y='0.9' class='st0' width='255.24' height='254.82'/%3E%3ClinearGradient id='SVGID_00000060734996446990026800000016954111756357516186_' gradientUnits='userSpaceOnUse' x1='-8.9304' y1='52.8552' x2='171.7801' y2='157.1885'%3E%3Cstop offset='0.268' style='stop-color:%23827CAD'/%3E%3Cstop offset='0.8917' style='stop-color:%23423F91'/%3E%3C/linearGradient%3E%3Cpath style='fill:url(%23SVGID_00000060734996446990026800000016954111756357516186_);' d='M206.06,74.7L205.79,0h-1l0.27,74.31 c-0.28-0.06-0.56-0.1-0.85-0.1c-0.35,0-0.69,0.06-1.02,0.15L165.42,0h-1.12l37.96,74.75c-0.95,0.54-1.66,1.44-1.92,2.53L73.89,24.1 c0.1-0.35,0.16-0.7,0.16-1.08c0-1.52-0.85-2.82-2.09-3.51L80.24,0h-1.09l-8.11,19.14C70.72,19.06,70.39,19,70.04,19 c-0.8,0-1.54,0.24-2.16,0.64L51.59,0h-1.3l16.82,20.28c-0.57,0.6-0.94,1.38-1.04,2.24H0v1h66.06c0.13,1.03,0.64,1.93,1.39,2.57 L0,107.78v1.57l68.3-82.72c0.53,0.25,1.11,0.41,1.74,0.41c0.25,0,0.49-0.03,0.72-0.07l43.11,110.9c-1.1,0.6-1.89,1.69-2.06,2.98 L0,118.31v1.02l111.8,22.55c0.07,0.57,0.25,1.1,0.53,1.57L0,209.88v1.16l112.94-66.8c0.73,0.72,1.73,1.17,2.84,1.17 c0.57,0,1.1-0.12,1.59-0.33l28.49,30.94c-0.65,0.4-1.13,1.04-1.3,1.8L0,213.39v1.03l144.53-35.55c0.03,0.19,0.07,0.38,0.14,0.55 l-92.69,53.83c-0.52-0.54-1.25-0.89-2.06-0.89c-1.07,0-1.99,0.59-2.47,1.46L0,217.48v1.06l46.83,16.14L0,233.83v1l47.12,0.85 c0.23,1.35,1.39,2.37,2.8,2.37c1.57,0,2.85-1.27,2.85-2.85c0-0.4-0.08-0.78-0.23-1.13l92.64-53.8c0.52,0.61,1.29,1.01,2.16,1.01 c1.57,0,2.85-1.27,2.85-2.85c0-0.87-0.4-1.63-1.01-2.15l55.07-94.12c2.18-0.02,3.95-1.79,3.95-3.98 C208.19,76.67,207.32,75.36,206.06,74.7z M115.78,137.38c-0.34,0-0.66,0.05-0.98,0.13L71.71,26.67c0.76-0.35,1.38-0.93,1.79-1.65 l126.72,53.3c0.04,1.3,0.69,2.44,1.69,3.14l-82.94,57.52C118.24,138.01,117.09,137.38,115.78,137.38z M148.31,175.8 c-0.31-0.11-0.63-0.18-0.98-0.18c-0.16,0-0.31,0.02-0.46,0.05l-28.63-31.1c0.94-0.74,1.56-1.87,1.56-3.16 c0-0.55-0.11-1.08-0.31-1.56l83.46-57.88c0.07,0.02,0.14,0.05,0.22,0.07L148.31,175.8z'/%3E%3Cg%3E%3Cpath class='st2' d='M50.82,105.47h158.99v19.69H141.7v11.39h58.1v50.78H83.41v11.78h116.4v19.69H60.64v-51.17h116.4v-11.39H60.64 v-19.69h58.3v-11.39H50.82V105.47z M60.64,44.65h58.3V30.55h22.77v14.09H200v19.69h-37.88l41.02,31.08h-32.58l-40.63-30.51 L89.69,95.23H57.3l40.44-30.89h-37.1V44.65z'/%3E%3C/g%3E%3C/svg%3E" type="image/svg+xml">
-    <title>MS AI School 3기 6월 출첵커</title>
+    <title>MS AI School 3기 7월 출첵커</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap">
     <style>
         body {
@@ -96,19 +97,19 @@
 <body onload="updateClock();">
 <div class="page">
 <div class="container">
-    <H1 class="title">MS AI School 3기 6월 출첵커</H1>
+    <H1 class="title">MS AI School 3기 7월 출첵커</H1>
     <div id="clock"></div>
-    <p class="message no hidden" id="noChulCheck">지금은 출석 체크 시간이 아닙니다.</p>
-    <p class="message yes hidden" id="morningChulCheck">아침 출석 체크 시간입니다.</p>
-    <p class="message yes hidden" id="noonChulCheck">점심 출석 체크 시간입니다.</p>
-    <p class="message yes hidden" id="eveningChulCheck">저녁 출석 체크 시간입니다.</p>
+    <p class="message no hidden" id="noChulCheck">지금은 출석체크 시간이 아닙니다.</p>
+    <p class="message yes hidden" id="morningChulCheck">체크인 시간입니다.</p>
+    <p class="message yes hidden" id="noonChulCheck">중간 체크인 시간입니다.</p>
+    <p class="message yes hidden" id="eveningChulCheck">체크아웃 시간입니다.</p>
     <img class="logo" src="https://cdn.imweb.me/thumbnail/20220817/3f2423e6ae082.png" alt="">
 </div>
 </div>
 <script>
-    let morningLink = "https://forms.office.com/r/fyjBertmua"; // 6월 링크
-    let noonLink = "https://forms.office.com/r/XY5TevC9tj"; // 6월 링크
-    let eveningLink = "https://forms.office.com/r/n8Cp2YJyJ8"; // 6월 링크
+    let morningLink = "https://forms.microsoft.com/r/9XAGQUWB7C"; // 7월 링크
+    let noonLink = "https://forms.microsoft.com/r/C9xiFYmixV"; // 7월 링크
+    let eveningLink = "https://forms.microsoft.com/r/00Ny5wfGKz"; // 7월 링크
     let currentState = -1; // 0:출석 시간 아님  | 1:아침 출석 시간(08:45:00-09:09:59) | 2:점심출석시간 (12:55:00-13:09:59) | 3:저녁출석시간(17:51:00-18:04:59)
 
     window.addEventListener("DOMContentLoaded", function() {
@@ -187,8 +188,8 @@
             const element = elements[i];
             if (element.id === id) {
                 if(id!=="noChulCheck"){
-                    let time = (id.includes("morning"))?"아침":(id.includes("noon"))?"점심":(id.includes("evening"))?"저녁":"";
-                    alert(`${time} 출석 체크 시간입니다!`);
+                    let time = (id.includes("morning"))?"체크인":(id.includes("noon"))?"중간 체크인":(id.includes("evening"))?"체크아웃":"";
+                    alert(`${time} 시간입니다!`);
                 }
                 element.classList.remove('hidden');
             } else {
